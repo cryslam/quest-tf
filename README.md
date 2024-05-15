@@ -2,7 +2,7 @@
 
 Preface: I requested public cert from ACM and next step is to associate it with my LoadBalancer to satisfy TLS - Step 7 in project requirements
 
-### Infrastructure, I would improve: ###
+### If give more time for Infrastructure, I would improve: ###
   *  Create ASG if we need to scale horizontally and have a min of instances for this application
   *  If the webapp were to grow with content, assets, and have customers worldwide -- CloudFront distribution could be an option
     *  Cloudfront due to edge locations esp if customers worldwide
