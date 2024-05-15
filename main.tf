@@ -29,10 +29,6 @@ data "aws_subnet" "subnet" {
   id       = each.value
 }
 
-output "subnet_cidr_blocks" {
-  value = [for s in data.aws_subnet.subnet : s.cidr_block]
-}
-
 data "aws_s3_bucket" "quest" {
   bucket = "quest-lb-logs"
 }
@@ -123,11 +119,9 @@ module "ec2_sg" {
   egress_rules        = ["all-all"]
 }
 
-
-
 resource "aws_instance" "quest_app" {
   ami           = data.aws_ami.amazon_linux_2.id
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
 
   root_block_device {
     volume_size = 8
@@ -157,11 +151,6 @@ resource "aws_eip" "quest_eip" {
   instance = aws_instance.quest_app.id
   domain   = "vpc"
 }
-
-
-
-
-
 
 #lb target group
 resource "aws_lb_target_group" "quest_lb_tg" {
