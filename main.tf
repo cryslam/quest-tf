@@ -1,3 +1,5 @@
+/** Implemented by Crystal Lam **/
+
 terraform {
   required_providers {
     aws = {
@@ -82,7 +84,6 @@ EOF
   }
 }
 
-
 data "aws_ami" "amazon_linux_2" {
   most_recent = true
   owners      = ["amazon"]
@@ -92,7 +93,6 @@ data "aws_ami" "amazon_linux_2" {
     values = ["amzn2-ami-hvm-*-x86_64-ebs"]
   }
 }
-
 
 #ssh sg
 module "dev_ssh_sg" {
@@ -170,7 +170,6 @@ resource "aws_lb_target_group_attachment" "quest_tg_attachment" {
   target_id        = aws_instance.quest_app.id
   port             = 80
 }
-
 
 #quest lb
 resource "aws_lb" "quest_lb" {
